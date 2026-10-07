@@ -38,7 +38,7 @@ export default function About() {
           <div className="about-summary card">
             <div className="about-summary-top">
               <div className="about-logo-wrap">
-                <img src="/assets/luwang-maheikol-logo.png" alt={`${institute.name} logo`} />
+                <img src={`${import.meta.env.BASE_URL}assets/luwang-maheikol-logo.png`} alt={`${institute.name} logo`} />
               </div>
               <div>
                 <span className="feature-number">OUR APPROACH</span>

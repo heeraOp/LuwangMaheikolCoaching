@@ -13,7 +13,7 @@ export default function Navbar() {
   const name = institute?.name || 'Luwang Maheikol'
   return <header className="site-header"><div className="container nav-shell">
     <Link to="/" className="brand" onClick={() => setOpen(false)}>
-      <img className="brand-logo" src="/assets/luwang-maheikol-logo.png" alt="Luwang Maheikol Coaching Cum Hostel logo" />
+      <img className="brand-logo" src={`${import.meta.env.BASE_URL}assets/luwang-maheikol-logo.png`} alt="Luwang Maheikol Coaching Cum Hostel logo" />
       <span><strong>{name}</strong><small>Science • Maths • Classes 9–12</small></span>
     </Link>
     <button className="icon-button mobile-menu" aria-label="Toggle menu" onClick={() => setOpen(v => !v)}>{open ? <X /> : <Menu />}</button>

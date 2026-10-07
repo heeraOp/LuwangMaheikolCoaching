@@ -21,7 +21,7 @@ export default function Home() {
           <div className="hero-visual">
             <div className="hero-logo-stage">
               <div className="hero-logo-glow" />
-              <img className="hero-main-logo" src="/assets/luwang-maheikol-logo.png" alt="Luwang Maheikol" />
+              <img className="hero-main-logo" src={`${import.meta.env.BASE_URL}assets/luwang-maheikol-logo.png`} alt="Luwang Maheikol" />
               <div className="hero-logo-caption"><strong>Luwang Maheikol</strong><span>Coaching Cum Hostel · Est. 2024</span></div>
             </div>
             <div className="floating">

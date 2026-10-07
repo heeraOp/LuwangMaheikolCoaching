@@ -16,7 +16,7 @@ export default function TeacherLayout() {
   const logout = async () => { try { await api.logout() } catch {} sessionStorage.removeItem('lm_teacher_session'); navigate('/teacher/login') }
   return <div className="admin-shell">
     <aside className={`admin-sidebar ${open ? 'open' : ''}`}>
-      <div className="admin-logo"><img className="brand-logo" src="/assets/luwang-maheikol-logo.png" alt="Luwang Maheikol Coaching Cum Hostel logo" /><span><strong>Teacher / Admin</strong><small>Content manager</small></span></div>
+      <div className="admin-logo"><img className="brand-logo" src={`${import.meta.env.BASE_URL}assets/luwang-maheikol-logo.png`} alt="Luwang Maheikol Coaching Cum Hostel logo" /><span><strong>Teacher / Admin</strong><small>Content manager</small></span></div>
       <nav>{links.map(([to, label, Icon]) => <NavLink end={to === '/teacher'} key={to} to={to} onClick={() => setOpen(false)}><Icon size={18}/>{label}</NavLink>)}</nav>
       <button className="admin-logout" onClick={logout}><LogOut size={18}/> Sign out</button>
     </aside>

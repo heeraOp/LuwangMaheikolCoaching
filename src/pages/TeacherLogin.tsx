@@ -33,7 +33,7 @@ export default function TeacherLogin() {
       <div className="login-card">
         <img
           className="login-logo"
-          src="/assets/luwang-maheikol-logo.png"
+          src={`${import.meta.env.BASE_URL}assets/luwang-maheikol-logo.png`}
           alt="Luwang Maheikol logo"
         />
 

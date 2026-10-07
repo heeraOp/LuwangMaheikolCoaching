@@ -7,7 +7,7 @@ import { AppProvider } from './context'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/LuwangMaheikolCoaching">
       <AppProvider>
         <App />
       </AppProvider>
