@@ -64,3 +64,361 @@
 .status-message{margin-top:10px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.035);font-size:12px;color:#b9c7d9}
 @media(max-width:900px){.hero-card{min-height:470px}.hero-logo-stage{min-height:280px}.hero-main-logo{width:220px;height:225px}}
 @media(max-width:600px){.hero{padding-top:46px}.hero-card{min-height:450px}.hero-logo-stage{min-height:255px}.hero-main-logo{width:190px;height:205px}.hero-logo-caption{left:12px;right:12px}.hero-logo-caption strong{font-size:13px}}
+
+/* =========================================
+   HOME HERO — ALIGNMENT AND OVERFLOW FIX
+   ========================================= */
+
+/* Let the outer hero panel grow with its content. */
+.hero-card {
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  align-self: start;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+/* Stack the logo area and feature cards vertically. */
+.hero-visual {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+/* Give the logo its own dedicated area. */
+.hero-logo-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 450px;
+  height: auto;
+  padding: 24px 18px 108px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Keep the decorative glow centred behind the logo. */
+.hero-logo-glow {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(75%, 320px);
+  aspect-ratio: 1;
+  pointer-events: none;
+}
+
+/* Prevent the logo from colliding with its caption. */
+.hero-main-logo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(76%, 330px);
+  height: auto;
+  max-height: 310px;
+  object-fit: contain;
+  object-position: center;
+  transform: translateY(-12px);
+}
+
+/* Anchor the caption below the crest. */
+.hero-logo-caption {
+  position: absolute;
+  z-index: 2;
+  top: auto;
+  right: 16px;
+  bottom: 16px;
+  left: 16px;
+  width: auto;
+  min-height: 84px;
+  margin: 0;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Keep the four feature cards in the normal document flow.
+   This prevents overlap and clipping at the bottom. */
+.floating {
+  position: relative;
+  inset: auto;
+  transform: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Consistent card dimensions and text wrapping. */
+.float-card {
+  position: relative;
+  min-width: 0;
+  min-height: 112px;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  box-sizing: border-box;
+}
+
+.float-card b {
+  display: block;
+  line-height: 1.15;
+}
+
+.float-card span {
+  display: block;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+/* Avoid grid overflow at tablet and mobile widths. */
+@media (max-width: 640px) {
+  .hero-logo-stage {
+    min-height: 370px;
+    padding: 20px 12px 100px;
+  }
+
+  .hero-main-logo {
+    width: min(82%, 280px);
+    max-height: 250px;
+    transform: translateY(-8px);
+  }
+
+  .hero-logo-caption {
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    min-height: 78px;
+    padding: 12px;
+  }
+
+  .floating {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .float-card {
+    min-height: 100px;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .floating {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ==========================================
+   HOSTEL PAGE — LAYOUT REFINEMENTS
+   ========================================== */
+
+/* Desktop: hero content and contact card side by side */
+.hostel-page-hero .hostel-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+  align-items: center;
+  gap: clamp(24px, 3vw, 44px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.hostel-hero-copy {
+  min-width: 0;
+}
+
+.hostel-contact-card {
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  align-self: center;
+  padding: clamp(22px, 2.5vw, 32px);
+  box-sizing: border-box;
+}
+
+/* Contact card icon spacing */
+.hostel-contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+/* Stack the checklist instead of running its text together */
+.hostel-confirm-list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  margin: 22px 0;
+  padding: 0;
+}
+
+.hostel-confirm-list > span {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+  line-height: 1.6;
+}
+
+.hostel-confirm-list > span svg {
+  flex: 0 0 16px;
+  margin-top: 4px;
+}
+
+/* Consistent contact button spacing */
+.hostel-contact-card .hostel-call-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  max-width: 100%;
+  min-height: 44px;
+  margin: 6px 8px 0 0;
+  vertical-align: middle;
+  box-sizing: border-box;
+  white-space: normal;
+  text-align: center;
+}
+
+/* The question cards */
+.hostel-question-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.hostel-question-card {
+  min-width: 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.hostel-question-card h3 {
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.hostel-question-card p {
+  line-height: 1.75;
+}
+
+/* Align the final enquiry section */
+.hostel-bottom-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.hostel-bottom-cta > div:first-child {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.hostel-bottom-actions {
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  min-width: 220px;
+}
+
+.hostel-bottom-actions .button {
+  justify-content: center;
+  text-align: center;
+}
+
+.hostel-bottom-actions .text-link {
+  overflow-wrap: anywhere;
+}
+
+/* Tablet and mobile */
+@media (max-width: 900px) {
+  .hostel-page-hero .hostel-hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .hostel-contact-card {
+    max-width: none;
+  }
+
+  .hostel-question-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hostel-bottom-cta {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .hostel-bottom-actions {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .hostel-question-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hostel-contact-card {
+    padding: 22px 18px;
+  }
+
+  .hostel-contact-card .hostel-call-link {
+    margin-right: 4px;
+  }
+
+  .hostel-meta-row {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+
+/* FIX: Align Hostel hero with the site's main container */
+.hostel-page-hero .container.hostel-hero-grid {
+  width: min(calc(100% - 48px), 1040px);
+  max-width: 1040px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* Keep enough space between the two hero columns */
+.hostel-page-hero .hostel-hero-grid {
+  column-gap: clamp(24px, 3vw, 40px);
+}
+
+/* Prevent horizontal overflow on small screens */
+@media (max-width: 560px) {
+  .hostel-page-hero .container.hostel-hero-grid {
+    width: calc(100% - 32px);
+  }
+}
